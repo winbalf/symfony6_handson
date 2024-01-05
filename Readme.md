@@ -78,3 +78,11 @@ symfony console make:entity
 
 symfony console make:migration
 symfony console doctrine:migrations:migrate
+
+https://symfony.com/doc/current/console.html
+Creating a command
+symfony console make:command
+-- app:create-user
+
+Running the command
+symfony console app:create-user
