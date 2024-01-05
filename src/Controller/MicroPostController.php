@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MicroPostController extends AbstractController
 {
-    #[Route('/micro_post', name: 'app_micro_post')]
+    #[Route('/micro-post', name: 'app_micro_post')]
     public function index(MicroPostRepository $posts): Response
     {
         // dd($posts->findAll());

@@ -86,3 +86,7 @@ symfony console make:command
 
 Running the command
 symfony console app:create-user
+
+https://symfony.com/doc/current/security.html#the-firewall
+symfony console make:controller
+-- LoginController
