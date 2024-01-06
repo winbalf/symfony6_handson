@@ -42,23 +42,26 @@ class AppFixtures extends Fixture
 
         // $product = new Product();
         // $manager->persist($product);
-        $micrPost1 = new MicroPost();
-        $micrPost1->setTitle('Welcome to Poland!');
-        $micrPost1->setText('Welcome to Poland!');
-        $micrPost1->setCreated(new DateTime());
-        $manager->persist($micrPost1);
+        $microPost1 = new MicroPost();
+        $microPost1->setTitle('Welcome to Poland!');
+        $microPost1->setText('Welcome to Poland!');
+        $microPost1->setCreated(new DateTime());
+        $microPost1->setAuthor($user1);
+        $manager->persist($microPost1);
 
-        $micrPost2 = new MicroPost();
-        $micrPost2->setTitle('Welcome to USA!');
-        $micrPost2->setText('Welcome to USA!');
-        $micrPost2->setCreated(new DateTime());
-        $manager->persist($micrPost2);
+        $microPost2 = new MicroPost();
+        $microPost2->setTitle('Welcome to USA!');
+        $microPost2->setText('Welcome to USA!');
+        $microPost2->setCreated(new DateTime());
+        $microPost2->setAuthor($user2);
+        $manager->persist($microPost2);
 
-        $micrPost3 = new MicroPost();
-        $micrPost3->setTitle('Welcome to Germany!');
-        $micrPost3->setText('Welcome to Germany!');
-        $micrPost3->setCreated(new DateTime());
-        $manager->persist($micrPost3);
+        $microPost3 = new MicroPost();
+        $microPost3->setTitle('Welcome to Germany!');
+        $microPost3->setText('Welcome to Germany!');
+        $microPost3->setCreated(new DateTime());
+        $microPost3->setAuthor($user1);
+        $manager->persist($microPost3);
 
         $manager->flush();
     }

@@ -80,13 +80,31 @@ symfony console make:migration
 symfony console doctrine:migrations:migrate
 
 https://symfony.com/doc/current/console.html
-Creating a command
+
+<!-- Creating a command -->
+
 symfony console make:command
 -- app:create-user
 
-Running the command
+<!-- Running the command -->
+
 symfony console app:create-user
 
 https://symfony.com/doc/current/security.html#the-firewall
 symfony console make:controller
 -- LoginController
+
+<!--
+WARNING: This removes all the database tables!
+Cannot be reverted!
+Only use on development machine!
+-->
+
+symfony console doctrine:schema:drop --force
+
+<!--
+Creating database scheme
+[CAUTION] This operation should not be executed in a production environment!
+-->
+
+symfony console doctrine:schema:create
