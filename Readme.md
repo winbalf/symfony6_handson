@@ -108,3 +108,6 @@ Creating database scheme
 -->
 
 symfony console doctrine:schema:create
+
+ROLES
+IS_AUTHENTICATED_FULLY == ROLE_USER => synonymous
