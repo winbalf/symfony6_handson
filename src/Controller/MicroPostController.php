@@ -26,7 +26,7 @@ class MicroPostController extends AbstractController
         ]);
     }
 
-    #[Route('/micro_post/{post}', name: 'app_micro_post_show')]
+    #[Route('/micro-post/{post}', name: 'app_micro_post_show')]
     public function showOne(MicroPost $post): Response
     {
         // dd($post);
@@ -35,10 +35,12 @@ class MicroPostController extends AbstractController
         ]);
     }
 
-    #[Route('/micro_post/add', name: 'app_micro_post_add', priority: 2)]
-    public function add(Request $request, MicroPostRepository $posts): Response
-    {
-        // $microPost = new MicroPost();
+    #[Route('/micro-post/add', name: 'app_micro_post_add', priority: 2)]
+    public function add(
+        Request $request,
+        MicroPostRepository $posts
+    ): Response {
+        // dd($this->getUser());
         $form = $this->createForm(MicroPostType::class, new MicroPost());
 
         $form->handleRequest($request);
@@ -46,7 +48,7 @@ class MicroPostController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $post = $form->getData();
             $post->setCreated(new DateTime());
-
+            $post->setAuthor($this->getUser());
             $posts->add($post, true);
 
             // Add a flash message
@@ -61,13 +63,9 @@ class MicroPostController extends AbstractController
         ]);
     }
 
-    #[Route('/micro_post/{post}/edit', name: 'app_micro_post_edit')]
+    #[Route('/micro-post/{post}/edit', name: 'app_micro_post_edit')]
     public function edit(MicroPost $post, Request $request, MicroPostRepository $posts): Response
     {
-        // $form = $this->createFormBuilder($post)
-        //     ->add('title')
-        //     ->add('text')
-        //     ->getForm();
         $form = $this->createForm(MicroPostType::class, $post);
 
         $form->handleRequest($request);
@@ -90,7 +88,7 @@ class MicroPostController extends AbstractController
         ]);
     }
 
-    #[Route('/micro_post/{post}/comment', name: 'app_micro_post_comment')]
+    #[Route('/micro-post/{post}/comment', name: 'app_micro_post_comment')]
     public function addComment(MicroPost $post, Request $request, CommentRepository $comments): Response
     {
         $form = $this->createForm(CommentType::class, new Comment());
@@ -100,6 +98,7 @@ class MicroPostController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $comment = $form->getData();
             $comment->setPost($post);
+            $comment->setAuthor($this->getUser());
             $comments->add($comment, true);
 
             // Add a flash message
