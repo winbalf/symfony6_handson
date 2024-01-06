@@ -33,7 +33,7 @@ symfony console doctrine:database:create
 symfony console make:entity
 
 https://symfony.com/bundles/DoctrineMigrationsBundle/current/index.html
-symofony console make:migration
+symfony console make:migration
 symfony console doctrine:migrations:status
 symfony console doctrine:migrations:migrate
 symfony console doctrine:migrations:status
@@ -116,3 +116,12 @@ IS_AUTHENTICATED_FULLY == ROLE_USER => synonymous
 <!-- https://symfony.com/doc/current/security/voters.html -->
 
 symfony console make:voter
+
+<!-- Creating a registration form for App\Entity\User -->
+
+symfony console make:registration-form
+composer require symfonycasts/verify-email-bundle
+
+<!-- What is the difference between 0.0.0.0, 127.0.0.1 and localhost? -->
+
+https://stackoverflow.com/questions/20778771/what-is-the-difference-between-0-0-0-0-127-0-0-1-and-localhost
