@@ -109,5 +109,10 @@ Creating database scheme
 
 symfony console doctrine:schema:create
 
-ROLES
+<!-- ROLES -->
+
 IS_AUTHENTICATED_FULLY == ROLE_USER => synonymous
+
+<!-- https://symfony.com/doc/current/security/voters.html -->
+
+symfony console make:voter
