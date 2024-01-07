@@ -125,3 +125,7 @@ composer require symfonycasts/verify-email-bundle
 <!-- What is the difference between 0.0.0.0, 127.0.0.1 and localhost? -->
 
 https://stackoverflow.com/questions/20778771/what-is-the-difference-between-0-0-0-0-127-0-0-1-and-localhost
+
+<!-- How to Create and Enable Custom User Checkers -->
+
+https://symfony.com/doc/current/security/user_checkers.html
