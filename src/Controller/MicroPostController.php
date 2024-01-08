@@ -22,10 +22,12 @@ class MicroPostController extends AbstractController
     #[Route('/micro-post', name: 'app_micro_post')]
     public function index(MicroPostRepository $posts): Response
     {
-        // dd($posts->findAll());
-        return $this->render('micro_post/index.html.twig', [
-            'posts' => $posts->findAllWithComments(),
-        ]);
+        return $this->render(
+            'micro_post/index.html.twig',
+            [
+                'posts' => $posts->findAllWithComments(),
+            ]
+        );
     }
 
     #[Route('/micro-post/{post}', name: 'app_micro_post_show')]
@@ -60,7 +62,10 @@ class MicroPostController extends AbstractController
             $posts->add($post, true);
 
             // Add a flash message
-            $this->addFlash('success', 'Your micro post has been added');
+            $this->addFlash(
+                'success',
+                'Your micro post have been addded.'
+            );
 
             // Redirect 
             return $this->redirectToRoute('app_micro_post');
