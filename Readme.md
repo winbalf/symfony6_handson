@@ -129,3 +129,7 @@ https://stackoverflow.com/questions/20778771/what-is-the-difference-between-0-0-
 <!-- How to Create and Enable Custom User Checkers -->
 
 https://symfony.com/doc/current/security/user_checkers.html
+
+<!-- this return the last URL from which this page was visited     -->
+
+return $this->redirect($request->headers->get('referer'));
