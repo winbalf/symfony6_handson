@@ -1,4 +1,6 @@
-- symfony server:start
+<!-- Start project -->
+
+symfony server:start
 
 - symfony check:security
 
