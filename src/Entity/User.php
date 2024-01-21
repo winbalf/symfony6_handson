@@ -76,7 +76,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->email;
     }
 
-    public function setEmail(string $email): static
+    public function setEmail(string $email): self
     {
         $this->email = $email;
 
@@ -109,7 +109,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return array_unique($roles);
     }
 
-    public function setRoles(array $roles): static
+    public function setRoles(array $roles): self
     {
         $this->roles = $roles;
 
@@ -124,7 +124,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->password;
     }
 
-    public function setPassword(string $password): static
+    public function setPassword(string $password): self
     {
         $this->password = $password;
 
@@ -145,7 +145,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->userProfile;
     }
 
-    public function setUserProfile(UserProfile $userProfile): static
+    public function setUserProfile(UserProfile $userProfile): self
     {
         // set the owning side of the relation if necessary
         if ($userProfile->getUser() !== $this) {
@@ -165,7 +165,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->liked;
     }
 
-    public function addLiked(MicroPost $liked): static
+    public function addLiked(MicroPost $liked): self
     {
         if (!$this->liked->contains($liked)) {
             $this->liked->add($liked);
@@ -175,7 +175,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function removeLiked(MicroPost $liked): static
+    public function removeLiked(MicroPost $liked): self
     {
         if ($this->liked->removeElement($liked)) {
             $liked->removeLikedBy($this);
@@ -192,7 +192,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->posts;
     }
 
-    public function addPost(MicroPost $post): static
+    public function addPost(MicroPost $post): self
     {
         if (!$this->posts->contains($post)) {
             $this->posts->add($post);
@@ -202,7 +202,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function removePost(MicroPost $post): static
+    public function removePost(MicroPost $post): self
     {
         if ($this->posts->removeElement($post)) {
             // set the owning side to null (unless already changed)
@@ -222,7 +222,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->comments;
     }
 
-    public function addComment(Comment $comment): static
+    public function addComment(Comment $comment): self
     {
         if (!$this->comments->contains($comment)) {
             $this->comments->add($comment);
@@ -232,7 +232,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function removeComment(Comment $comment): static
+    public function removeComment(Comment $comment): self
     {
         if ($this->comments->removeElement($comment)) {
             // set the owning side to null (unless already changed)
@@ -249,7 +249,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->isVerified;
     }
 
-    public function setIsVerified(bool $isVerified): static
+    public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
 
@@ -261,7 +261,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->bannedUntil;
     }
 
-    public function setBannedUntil(?\DateTimeInterface $bannedUntil): static
+    public function setBannedUntil(?\DateTimeInterface $bannedUntil): self
     {
         $this->bannedUntil = $bannedUntil;
 
@@ -276,7 +276,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->follows;
     }
 
-    public function follow(self $follow): static
+    public function follow(self $follow): self
     {
         if (!$this->follows->contains($follow)) {
             $this->follows->add($follow);
@@ -285,7 +285,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function unfollow(self $follow): static
+    public function unfollow(self $follow): self
     {
         $this->follows->removeElement($follow);
 
@@ -300,7 +300,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->followers;
     }
 
-    public function addFollower(self $follower): static
+    public function addFollower(self $follower): self
     {
         if (!$this->followers->contains($follower)) {
             $this->followers->add($follower);
@@ -310,7 +310,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function removeFollower(self $follower): static
+    public function removeFollower(self $follower): self
     {
         if ($this->followers->removeElement($follower)) {
             $follower->unfollow($this);
